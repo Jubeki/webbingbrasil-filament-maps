@@ -450,7 +450,7 @@
             @if (count($actions))
                 <div
                     {{ $attributes->class([
-                        'filament-map-actions',
+                        'absolute z-10 p-2 space-y-2 filament-map-actions',
                     ]) }}
                 >
                     @foreach ($actions as $action)
