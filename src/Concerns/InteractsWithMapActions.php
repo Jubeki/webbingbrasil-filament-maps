@@ -29,10 +29,7 @@ trait InteractsWithMapActions
     protected function cacheMapActions(): void
     {
         /** @var array<string, \Filament\Actions\Action | ActionGroup> */
-        $actions = Action::configureUsing(
-            Closure::fromCallable([$this, 'configureAction']),
-            fn (): array => $this->getActions(),
-        );
+        $actions = $this->getActions();
 
         foreach ($actions as $action) {
             if ($action instanceof ActionGroup) {
