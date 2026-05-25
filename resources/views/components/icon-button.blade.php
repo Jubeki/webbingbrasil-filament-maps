@@ -1,6 +1,6 @@
 @php
     use Filament\Support\Enums\ActionSize;
-    use Filament\Support\Enums\IconSize;
+    use Filament\Support\Enums\Size;
 @endphp
 
 @props([
@@ -14,7 +14,7 @@
     'href' => null,
     'icon' => null,
     'iconAlias' => null,
-    'iconSize' => null,
+    'size' => null,
     'keyBindings' => null,
     'label' => null,
     'loadingIndicator' => true,
@@ -31,15 +31,15 @@
         $size = filled($size) ? (ActionSize::tryFrom($size) ?? $size) : null;
     }
 
-    $iconSize ??= match ($size) {
-        ActionSize::ExtraSmall => IconSize::Small,
-        ActionSize::Small, ActionSize::Medium => IconSize::Medium,
-        ActionSize::Large, ActionSize::ExtraLarge => IconSize::Large,
-        default => IconSize::Medium,
+    $size ??= match ($size) {
+        ActionSize::ExtraSmall => Size::Small,
+        ActionSize::Small, ActionSize::Medium => Size::Medium,
+        ActionSize::Large, ActionSize::ExtraLarge => Size::Large,
+        default => Size::Medium,
     };
 
-    if (! $iconSize instanceof IconSize) {
-        $iconSize = filled($iconSize) ? (IconSize::tryFrom($iconSize) ?? $iconSize) : null;
+    if (! $size instanceof Size) {
+        $size = filled($size) ? (Size::tryFrom($size) ?? $size) : null;
     }
 
     $buttonClasses = \Illuminate\Support\Arr::toCssClasses([
@@ -79,11 +79,11 @@
 
     $iconClasses = \Illuminate\Support\Arr::toCssClasses([
         'fi-icon-btn-icon transition duration-75',
-        match ($iconSize) {
-            IconSize::Small => 'h-4 w-4',
-            IconSize::Medium => 'h-5 w-5',
-            IconSize::Large => 'h-6 w-6',
-            default => $iconSize,
+        match ($size) {
+            Size::Small => 'h-4 w-4',
+            Size::Medium => 'h-5 w-5',
+            Size::Large => 'h-6 w-6',
+            default => $size,
         },
         'text-gray-400 dark:text-gray-500' => ($color === 'gray') || ($tag === 'label'),
         'text-white' => ($color !== 'gray') && ($tag !== 'label'),

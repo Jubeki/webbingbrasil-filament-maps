@@ -359,7 +359,7 @@ Marker::make('id')
     ->icon(
         string $iconUrl,
         string $shadowUrl,
-        array $iconSize,
+        array $size,
         array $iconAnchor,
         array $popupAnchor,
         array $shadowSize

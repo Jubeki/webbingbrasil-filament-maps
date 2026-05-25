@@ -123,7 +123,7 @@ class Marker implements Arrayable
     public function icon(
         string $iconUrl,
         string $shadowUrl,
-        array $iconSize,
+        array $size,
         array $iconAnchor,
         array $popupAnchor,
         array $shadowSize
@@ -132,7 +132,7 @@ class Marker implements Arrayable
         $this->icon = compact(
             'iconUrl',
             'shadowUrl',
-            'iconSize',
+            'size',
             'iconAnchor',
             'popupAnchor',
             'shadowSize'

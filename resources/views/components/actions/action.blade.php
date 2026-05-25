@@ -17,7 +17,7 @@
     :form-id="$action->getFormId()"
     :href="$isDisabled ? null : $url"
     :icon="$icon ?? $action->getIcon()"
-    :icon-size="$action->getIconSize()"
+    :icon-size="$action->getSize()"
     :key-bindings="$action->getKeyBindings()"
     :label-sr-only="$action->isLabelHidden()"
     :tag="$url ? 'a' : 'button'"
