@@ -1,5 +1,5 @@
 @php
-    use Filament\Support\Enums\ActionSize;
+    use Filament\Support\Enums\Size;
     use Filament\Support\Enums\Size;
 @endphp
 
@@ -18,7 +18,7 @@
     'keyBindings' => null,
     'label' => null,
     'loadingIndicator' => true,
-    'size' => ActionSize::Medium,
+    'size' => Size::Medium,
     'spaMode' => null,
     'tag' => 'button',
     'target' => null,
@@ -27,14 +27,14 @@
 ])
 
 @php
-    if (! $size instanceof ActionSize) {
-        $size = filled($size) ? (ActionSize::tryFrom($size) ?? $size) : null;
+    if (! $size instanceof Size) {
+        $size = filled($size) ? (Size::tryFrom($size) ?? $size) : null;
     }
 
     $size ??= match ($size) {
-        ActionSize::ExtraSmall => Size::Small,
-        ActionSize::Small, ActionSize::Medium => Size::Medium,
-        ActionSize::Large, ActionSize::ExtraLarge => Size::Large,
+        Size::ExtraSmall => Size::Small,
+        Size::Small, Size::Medium => Size::Medium,
+        Size::Large, Size::ExtraLarge => Size::Large,
         default => Size::Medium,
     };
 
@@ -52,13 +52,13 @@
                 default => 'fi-color-custom',
             },
             is_string($color) ? "fi-color-{$color}" : null,
-            ($size instanceof ActionSize) ? "fi-size-{$size->value}" : null,
+            ($size instanceof Size) ? "fi-size-{$size->value}" : null,
             match ($size) {
-                ActionSize::ExtraSmall => 'gap-1 px-2 py-1.5 text-xs',
-                ActionSize::Small => 'gap-1 px-2.5 py-1.5 text-sm',
-                ActionSize::Medium => 'gap-1.5 px-3 py-2 text-sm',
-                ActionSize::Large => 'gap-1.5 px-3.5 py-2.5 text-sm',
-                ActionSize::ExtraLarge => 'gap-1.5 px-4 py-3 text-sm',
+                Size::ExtraSmall => 'gap-1 px-2 py-1.5 text-xs',
+                Size::Small => 'gap-1 px-2.5 py-1.5 text-sm',
+                Size::Medium => 'gap-1.5 px-3 py-2 text-sm',
+                Size::Large => 'gap-1.5 px-3.5 py-2.5 text-sm',
+                Size::ExtraLarge => 'gap-1.5 px-4 py-3 text-sm',
                 default => $size,
             },
             'bg-white text-gray-950 hover:bg-gray-50 dark:bg-white/5 dark:text-white dark:hover:bg-white/10' => ($color === 'gray') || ($tag === 'label'),
