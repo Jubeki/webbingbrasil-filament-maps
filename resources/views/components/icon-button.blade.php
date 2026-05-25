@@ -1,6 +1,5 @@
 @php
     use Filament\Support\Enums\Size;
-    use Filament\Support\Enums\Size;
 @endphp
 
 @props([
